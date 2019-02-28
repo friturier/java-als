@@ -3,22 +3,21 @@ package org.ruivieira.ml.als;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.SparseRealMatrix;
 
-public class BatchALS {
+public class BatchALS extends AbstractALS {
 
     private final SparseRealMatrix ratings;
     private final double alpha;
     private final double beta;
-    private final int rank;
 
 
     public BatchALS(SparseRealMatrix ratings,
                     int rank,
                     double alpha,
                     double beta) {
+        super(rank);
         this.ratings = ratings;
         this.alpha = alpha;
         this.beta = beta;
-        this.rank = rank;
     }
 
     public LatentFactors run(LatentFactors factors) {
@@ -44,13 +43,9 @@ public class BatchALS {
                 }
             }
         }
-        
+
         return new LatentFactors(user_factors, item_factors);
 
-    }
-
-    public double predict(LatentFactors factors, int i, int j) {
-        return factors.getUsers().getRowVector(i).dotProduct(factors.getItems().getColumnVector(j));
     }
 
 }
