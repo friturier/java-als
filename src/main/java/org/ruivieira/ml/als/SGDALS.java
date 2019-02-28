@@ -9,23 +9,31 @@ import org.apache.commons.math3.random.RandomGenerator;
 import java.util.Comparator;
 import java.util.List;
 
-public class SGDALS {
+public class SGDALS extends AbstractALS {
 
 
-    private final double lambda_user = 0.7;
-    private final double lambda_item = 0.7;
-    private double learning_rate = 0.01;
-    private int rank;
+    private final double lambda_user;
+    private final double lambda_item;
+    private double learning_rate;
+    private final double rate;
 
     public SGDALS(int rank) {
-        this.rank = rank;
+        this(rank, 0.01, 0.01, 0.01, 1.0);
+    }
+
+    public SGDALS(int rank, double lambda_user, double lambda_item, double learning_rate, double rate) {
+        super(rank);
+        this.lambda_user = lambda_user;
+        this.lambda_item = lambda_item;
+        this.learning_rate = learning_rate;
+        this.rate = rate;
     }
 
 
     public LatentFactors run(LatentFactors factors, List<Rating> ratings) {
 
 
-        this.learning_rate = this.learning_rate / 1.3;
+        this.learning_rate = this.learning_rate / this.rate;
 
         final int userIds = ratings.stream().max(Comparator.comparing(Rating::getUser)).get().getUser();
         final int itemIds = ratings.stream().max(Comparator.comparing(Rating::getItem)).get().getItem();
