@@ -29,6 +29,10 @@ RUN adduser --disabled-password \
 COPY . $HOME
 RUN chown -R $NB_UID $HOME
 
+RUN wget -O $HOME/ml-latest-small.zip http://files.grouplens.org/datasets/movielens/ml-latest-small.zip \
+    && cd $HOME \
+    && unzip ml-latest-small.zip
+
 USER $NB_USER
 
 # Launch the notebook server
