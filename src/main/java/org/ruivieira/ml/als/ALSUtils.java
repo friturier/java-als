@@ -3,17 +3,15 @@ package org.ruivieira.ml.als;
 import org.apache.commons.math3.linear.OpenMapRealMatrix;
 import org.apache.commons.math3.linear.SparseRealMatrix;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class ALSUtils {
 
     public static SparseRealMatrix toMatrix(List<Rating> ratings) {
-        int max_user = 0;
-        int max_item = 0;
-        for (Rating rating : ratings) {
-            max_user = Math.max(max_user, rating.getUser());
-            max_item = Math.max(max_item, rating.getItem());
-        }
+
+        final int max_user = maxUser(ratings);
+        final int max_item = maxItem(ratings);
 
         final SparseRealMatrix ratingsMatrix = new OpenMapRealMatrix(max_user, max_item);
         for (Rating rating : ratings) {
@@ -21,4 +19,13 @@ public class ALSUtils {
         }
         return ratingsMatrix;
     }
+
+    public static int maxUser(List<Rating> ratings) {
+        return ratings.stream().max(Comparator.comparing(Rating::getUser)).get().getUser();
+    }
+
+    public static int maxItem(List<Rating> ratings) {
+        return ratings.stream().max(Comparator.comparing(Rating::getItem)).get().getItem();
+    }
+
 }
