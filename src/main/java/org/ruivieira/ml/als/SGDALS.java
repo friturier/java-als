@@ -35,18 +35,18 @@ public class SGDALS extends AbstractALS {
 
         this.learning_rate = this.learning_rate / this.rate;
 
-        final int userIds = ratings.stream().max(Comparator.comparing(Rating::getUser)).get().getUser();
-        final int itemIds = ratings.stream().max(Comparator.comparing(Rating::getItem)).get().getItem();
+        final int maxUserId = ALSUtils.maxUser(ratings);
+        final int maxItemId = ALSUtils.maxItem(ratings);
 
         RandomGenerator rng = new MersenneTwister();
 
-        if (factors.getUsers().getRowDimension() < userIds) {
+        if (factors.getUsers().getRowDimension() < maxUserId) {
             // grow users
-            RealMatrix newUserFactors = MatrixUtils.createRealMatrix(userIds, this.rank);
+            RealMatrix newUserFactors = MatrixUtils.createRealMatrix(maxUserId, this.rank);
             for (int row = 0 ; row < factors.getUsers().getRowDimension() ; row++) {
                 newUserFactors.setRowVector(row, factors.getUsers().getRowVector(row));
             }
-            for (int row = factors.getUsers().getRowDimension(); row < userIds ; row++) {
+            for (int row = factors.getUsers().getRowDimension(); row < maxUserId ; row++) {
                 for (int col = 0 ; col < this.rank ; col++) {
                     newUserFactors.setEntry(row, col, rng.nextDouble());
                 }
@@ -54,13 +54,13 @@ public class SGDALS extends AbstractALS {
             factors = new LatentFactors(newUserFactors, factors.getItems());
         }
 
-        if (factors.getItems().getColumnDimension() < itemIds) {
+        if (factors.getItems().getColumnDimension() < maxItemId) {
             // grow items
-            RealMatrix newItemFactors = MatrixUtils.createRealMatrix(this.rank, itemIds);
+            RealMatrix newItemFactors = MatrixUtils.createRealMatrix(this.rank, maxItemId);
             for (int col = 0 ; col < factors.getItems().getColumnDimension() ; col++) {
                 newItemFactors.setColumnVector(col, factors.getItems().getColumnVector(col));
             }
-            for (int col = factors.getItems().getColumnDimension() ; col < userIds ; col++) {
+            for (int col = factors.getItems().getColumnDimension() ; col < maxUserId ; col++) {
                 for (int row = 0 ; row < this.rank ; row++) {
                     newItemFactors.setEntry(row, col, rng.nextDouble());
                 }
