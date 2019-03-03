@@ -25,3 +25,4 @@ target
 *.iml
 *.ipr
 *.iws
+docs/.ipynb_checkpoints
