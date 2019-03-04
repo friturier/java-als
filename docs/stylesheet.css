@@ -4,11 +4,12 @@ Overall document style
 */
 
 @import url('resources/fonts/dejavu.css');
+@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css);
 
 body {
     background-color:#ffffff;
     color:#353833;
-    font-family:'DejaVu Sans', Arial, Helvetica, sans-serif;
+    font-family:'Fira Code', Arial, Helvetica, sans-serif;
     font-size:14px;
     margin:0;
 }
@@ -32,7 +33,7 @@ a[name]:hover {
     color:#353833;
 }
 pre {
-    font-family:'DejaVu Sans Mono', monospace;
+    font-family:'Fira Code', monospace;
     font-size:14px;
 }
 h1 {
@@ -58,19 +59,19 @@ ul {
     list-style-type:disc;
 }
 code, tt {
-    font-family:'DejaVu Sans Mono', monospace;
+    font-family:'Fira Code', monospace;
     font-size:14px;
     padding-top:4px;
     margin-top:8px;
     line-height:1.4em;
 }
 dt code {
-    font-family:'DejaVu Sans Mono', monospace;
+    font-family:'Fira Code', monospace;
     font-size:14px;
     padding-top:4px;
 }
 table tr td dt code {
-    font-family:'DejaVu Sans Mono', monospace;
+    font-family:'Fira Code', monospace;
     font-size:14px;
     vertical-align:top;
     padding-top:4px;
