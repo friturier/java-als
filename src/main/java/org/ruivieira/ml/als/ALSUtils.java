@@ -1,6 +1,7 @@
 package org.ruivieira.ml.als;
 
 import org.apache.commons.math3.linear.OpenMapRealMatrix;
+import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.SparseRealMatrix;
 
 import java.util.Comparator;
@@ -26,6 +27,10 @@ public class ALSUtils {
 
     public static int maxItem(List<Rating> ratings) {
         return ratings.stream().max(Comparator.comparing(Rating::getItem)).get().getItem();
+    }
+
+    public static RealMatrix approximate(LatentFactors factors) {
+        return factors.getUsers().multiply(factors.getItems());
     }
 
 }

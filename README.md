@@ -97,5 +97,5 @@ for (int iter = 0 ; iter < n ; iter++) {
 After which, we can use the factors to approximate the ratings matrix, which will provide the rating _predictions_.
 
 ```java
-RealMatrix nR = factors.getUsers().dot(factors.getItems());
+RealMatrix approximation = ALSUtils.approximate(factors);
 ```
