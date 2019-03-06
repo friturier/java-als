@@ -17,7 +17,7 @@ You can use this library as a Maven dependency by adding
 <dependency>
     <groupId>org.ruivieira.ml</groupId>
     <artifactId>als</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
 </dependency>
 ```
 
