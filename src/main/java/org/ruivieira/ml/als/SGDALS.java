@@ -6,8 +6,9 @@ import org.apache.commons.math3.linear.RealVector;
 import org.apache.commons.math3.random.MersenneTwister;
 import org.apache.commons.math3.random.RandomGenerator;
 
-import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class SGDALS extends AbstractALS {
 
@@ -69,7 +70,11 @@ public class SGDALS extends AbstractALS {
 
         }
 
-            for (Rating rating : ratings) {
+        // Shuffle the ratings
+        final List<Integer> shuffledIndices = IntStream.range(0, ratings.size()).boxed().collect(Collectors.toList());
+
+            for (Integer index : shuffledIndices) {
+                final Rating rating = ratings.get(index);
                 RealVector userFactors = factors.getUsers().getRowVector(rating.getUser() - 1);
                 RealVector itemFactors = factors.getItems().getColumnVector(rating.getItem() - 1);
 
