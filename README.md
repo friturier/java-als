@@ -1,3 +1,4 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ruivieira/java-als/master?filepath=docs%2Fexamples.ipynb)
 [![Build Status](https://travis-ci.org/ruivieira/java-als.svg?branch=master)](https://travis-ci.org/ruivieira/java-als)
 # java-als
 A Java implementation of Alternating Least Squares (ALS).
