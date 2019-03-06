@@ -9,8 +9,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 public class ALSUtilsTest {
 
     private final List<Rating> ratings = new ArrayList<>();
