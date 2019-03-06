@@ -9,6 +9,11 @@ import java.util.List;
 
 public class ALSUtils {
 
+    /**
+     * Converts a list of {@link Rating} into a sparse ratings matrix ({@link org.apache.commons.math3.linear.SparseRealMatrix}).
+     * @param ratings a {@link java.util.List} of {@link Rating}.
+     * @return A sparse ratings matrix ({@link org.apache.commons.math3.linear.SparseRealMatrix}).
+     */
     public static SparseRealMatrix toMatrix(List<Rating> ratings) {
 
         final int max_user = maxUser(ratings);
