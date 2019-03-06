@@ -7,7 +7,8 @@ Supports:
 - [x] Batch ALS
 - [x] Stochastic Gradient Descent (SGD) ALS
 
-API documentation available [here](https://ruivieira.github.io/java-als/).
+API documentation available [here](https://ruivieira.github.io/java-als/). 
+A live, online Jupyter notebook is available [here](https://mybinder.org/v2/gh/ruivieira/java-als/master?filepath=docs%2Fexamples.ipynb) or by clicking the above _launch binder_ button.
 
 ## installation
 
