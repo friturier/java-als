@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/ruivieira/java-als.svg?branch=master)](https://travis-ci.org/ruivieira/java-als)
 # java-als
 A Java implementation of Alternating Least Squares (ALS).
 Supports:
