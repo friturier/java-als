@@ -1,4 +1,4 @@
-FROM ruivieira:ijava
+FROM ruivieira/ijava:latest
 
 RUN wget -O $HOME/ml-latest-small.zip http://files.grouplens.org/datasets/movielens/ml-latest-small.zip \
     && cd $HOME \
