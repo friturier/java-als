@@ -10,6 +10,7 @@ public class BatchALS extends AbstractALS {
     private final double beta;
 
 
+
     public BatchALS(SparseRealMatrix ratings,
                     int rank,
                     double alpha,

@@ -26,10 +26,20 @@ public class ALSUtils {
         return ratingsMatrix;
     }
 
+    /**
+     * Returns the highest user id from a {@link java.util.List} of {@link Rating}.
+     * @param ratings A {@link java.util.List} of {@link Rating}.
+     * @return The highest user id as an integer.
+     */
     public static int maxUser(List<Rating> ratings) {
         return ratings.stream().max(Comparator.comparing(Rating::getUser)).get().getUser();
     }
 
+    /**
+     * Returns the highest product id from a {@link java.util.List} of {@link Rating}.
+     * @param ratings A {@link java.util.List} of {@link Rating}.
+     * @return The highest product id as an integer.
+     */
     public static int maxItem(List<Rating> ratings) {
         return ratings.stream().max(Comparator.comparing(Rating::getItem)).get().getItem();
     }
